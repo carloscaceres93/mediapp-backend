@@ -15,6 +15,7 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,7 @@ public class SignosController {
 	@Autowired
 	private ISignoService service;
 	
+	@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping
 	public ResponseEntity<List<Signos>> listar() throws Exception{
 		List<Signos> lista = service.listar();
