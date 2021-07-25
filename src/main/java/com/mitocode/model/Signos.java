@@ -1,5 +1,7 @@
 package com.mitocode.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +27,9 @@ public class Signos {
 	
 	@Column(name = "ritmo", nullable = false, length = 50)
 	private String ritmo;
+	
+	@Column(name = "fecha", nullable = false)
+	private LocalDate fecha;
 	
 	@ManyToOne
 	@JoinColumn(name = "paciente", nullable = false)
@@ -61,6 +66,12 @@ public class Signos {
 		this.paciente = paciente;
 	}
 	
+	public LocalDate getFecha() {
+		return fecha;
+	}
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
 	@Override
 	public String toString() {
 		return "Signo [idSigno=" + idSigno + ", temperatura=" + temperatura + ", pulso=" + pulso + ", ritmo=" + ritmo
